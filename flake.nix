@@ -3,6 +3,6 @@
 
   outputs = { self }:
   {
-    zapret-dir = builtins.path { path = ./.; name = "zapret"; };
+    script-dir = builtins.path { path = ./.; name = "zapret"; };
   };
 }
