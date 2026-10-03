@@ -1,95 +1,241 @@
-# Stable4
-Я захардкодил последний рабочий конфиг от Flowseal на [этом коммите](https://github.com/Flowseal/zapret-discord-youtube/commit/8a1885d7d06a098989c450bb851a9508d977725d).
+<div align="center">
 
-Обновляю скрипт редко, для поддержания работоспособности относительно версии для Win. То бишь, пока не происходит массовых отказов всех стратегий.
+# 🎧 Zapret Discord YouTube Linux 📺
 
-Также можете попробовать [эту](https://github.com/Snowy-Fluffy/zapret.installer) версию от Snowy-Fluffy
+### Plug-And-Play адаптер для обхода замедления YouTube на Linux
 
-# Что это?
+На базе стратегий [Flowseal](https://github.com/Flowseal/zapret-discord-youtube) и [zapret](https://github.com/bol-van/zapret) от bol-van
 
-Это адаптер для запуска популярных конфигураций обхода замедления YouTube  
-на базе [Zapret Discord Youtube Flowseal](https://github.com/Flowseal/zapret-discord-youtube).  
-Скрипт создан за пару вечеров с целью сделать его Plug-And-Play.
+**Проверено на:**
+Ubuntu 24.04 • Debian 12 • Arch Linux • Gentoo Linux
 
-**Проверено на:**  
-- Ubuntu 24.04
-- Arch Linux
+[![Telegram Channel](https://img.shields.io/badge/Telegram-Канал-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/+oOPnF-TKMAIxMjg6)
+[![Telegram Chat](https://img.shields.io/badge/Telegram-Чат-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/+mPohxYQQdZoyMjRi)
 
----
+[![Boosty](https://img.shields.io/badge/Boosty-Сказать_спасибо-FF6154?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDI0QzE4LjYyNzQgMjQgMjQgMTguNjI3NCAyNCAxMkMyNCA1LjM3MjU4IDE4LjYyNzQgMCAxMiAwQzUuMzcyNTggMCAwIDUuMzcyNTggMCAxMkMwIDE4LjYyNzQgNS4zNzI1OCAyNCAxMiAyNFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=&logoColor=white)](https://boosty.to/sergeydigl3/about)
 
-# Как запустить
+[![GitHub stars](https://img.shields.io/github/stars/Sergeydigl3/zapret-discord-youtube-linux?style=social)](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Sergeydigl3/zapret-discord-youtube-linux?style=social)](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/network/members)
 
-1. **Клонирование репозитория и запуск основного скрипта:**
-
-   ```bash
-   git clone https://github.com/Sergeydigl3/zapret-discord-youtube-linux.git && cd zapret-discord-youtube-linux
-   sudo bash main_script.sh
-   ```
-> [!IMPORTANT]
-> Issues - предназначен для связи со мной как с разработчиком, в случае ошибок в работе скрипта, и для вопросов по его работе. 
-> Это АДАПТЕР! Он не дает вам гарантию, что стратегии вам подойдут и все разблокируют. Если у вас не работает ни одна из стратегий - то не нужно идти сразу в Issues и писать что у вас не работает ютуб. Нужно создать тред в Discussions или написать в существующий, а лучше сходить в репозиторий выше (Flowseal), и посмотреть что предлагают другие. Если же вы нашли ультимативную стратегию и хотите, чтобы я её добавил в custom-strategies, спокойно создавайте Issue, надеюсь на понимание.
->
-
-   Скрипт:
-   - Подкачает в zapret-latest стратегии указанные в ревизии.
-   - Предложит выбрать стратегию из bat-файлов (например, `general.bat`, `general_mgts2.bat`, `general_alt5.bat`).  
-     (При этом bat-файлы автоматически переименовываются через `rename_bat.sh`.)
-   - Попросит выбрать сетевой интерфейс.
-
-2. **Сохранение параметров:**
-
-   Ответы можно сохранить в файле `conf.env` и потом запускать скрипт в неинтерактивном режиме:
-   
-   ```bash
-   sudo bash main_script.sh -nointeractive
-   ```
-   
-   Для отладки парсинга используйте флаг `-debug`.
-
-   Пример содержимого файла `conf.env`:
-   
-   ```bash
-   strategy=general.bat
-   interface=enp0s3
-   gamefilter=true
-   ```
-   
-   > **Примечание:** Если требуется автообновление, установите auto_update=true.
-
-3. **Как посмотреть список интерфейсов:**
-
-   ```bash
-   ls /sys/class/net
-   ```
+</div>
 
 ---
 
-# Важно
+<div align="center">
 
-- Скрипт работает только с **nftables**.
-- При остановке скрипта все добавленные правила фаервола очищаются, а фоновые процессы `nfqws` останавливаются.
-- Если у вас настроены кастомные правила в nftables, сделайте их резервное копирование — скрипт может удалить их при запуске.
+[Быстрый старт](#быстрый-старт) • [Использование](#использование) • [Автозагрузка](#автозагрузка) • [Поддержка](#поддержка-и-помощь)
 
----
 
-# Автозагрузка
+</div>
 
-Для настройки автозагрузки сервиса запустите скрипт:
+## Быстрый старт
 
 ```bash
-sudo bash service.sh
+git clone https://github.com/Sergeydigl3/zapret-discord-youtube-linux.git
+cd zapret-discord-youtube-linux
+
+./service.sh download-deps --default
+./service.sh
 ```
 
-Скрипт service.sh теперь:
-- Проверяет наличие файла `conf.env` и обязательных непустых полей.
-- Если конфиг отсутствует или поля пустые (например, если у вас:
-  ```
-  strategy=
-  interface=
-  gamefilter=
-  ```
-  ), то предложит интерактивно выбрать параметры (интерфейс, стратегию из bat-файлов и gamefilter).
-- Создаёт systemd-сервис для автозапуска.
+Скрипт интерактивно предложит выбрать действие: запуск, управление сервисом или настройку конфигурации.
+
+> 💡 **Работа без пароля:** `./service.sh setup-permissions` — настроит NOPASSWD для nft/nfqws
+
+> 💡 Что-то не работает? Сначала прочитайте раздел [Поддержка и помощь](#поддержка-и-помощь)
+
+---
+
+**Требования:**
+- Работает только с **nftables**
+- Поддерживаемые архитектуры: **x86_64, ARM, MIPS, и др** (автоматическое определение)
+
+---
+
+## О версиях
+
+Адаптер по умолчанию использует:
+- **nfqws**: v72.9 (рекомендованная версия, прописана в `src/lib/constants.sh` как `ZAPRET_RECOMMENDED_VERSION`)
+- **Стратегии**: [коммит ef19845a801e4e743f7bdfdbd58f9745c6adbd60](https://github.com/Flowseal/zapret-discord-youtube/commit/ef19845a801e4e743f7bdfdbd58f9745c6adbd60) (прописан в `src/lib/constants.sh` как `MAIN_REPO_REV`)
+
+Вы можете изменить версии:
+- Интерактивно: `./service.sh download-deps` (выбор из доступных версий)
+- Напрямую: `./service.sh download-deps -z v72.9 -s main`
+- В коде: отредактируйте константы в `src/lib/constants.sh`
+
+Если текущая версия не работает, попробуйте [стабильные релизы](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/releases).
+
+**Сторонние проекты:**
+- [Версия от Snowy-Fluffy](https://github.com/Snowy-Fluffy/zapret.installer)
+
+---
+
+# Использование
+
+## Интерактивный режим
+
+```bash
+./service.sh
+```
+
+Меню предлагает:
+1. **Запустить** — интерактивный выбор интерфейса, gamefilter и стратегии, запуск в текущем терминале
+2. **Управление сервисом** — установка/удаление/перезапуск системного сервиса
+3. **Изменить конфигурацию** — редактирование `conf.env`
+
+## Конфигурация (conf.env)
+
+Создайте файл `conf.env`:
+
+```bash
+strategy=general.bat
+interface=enp0s3
+gamefiltertcp=true
+gamefiterudp=true
+```
+
+## Управление через CLI
+
+### Основные команды
+
+```bash
+./service.sh --help  # показать справку по командам
+```
+
+### Управление зависимостями
+
+```bash
+# Скачать nfqws и стратегии (интерактивный выбор версий)
+./service.sh download-deps
+
+# Скачать рекомендованные версии (неинтерактивно)
+./service.sh download-deps --default
+
+# Скачать конкретные версии
+./service.sh download-deps -z v72.9 -s main
+
+# Показать доступные стратегии
+./service.sh strategy list
+```
+
+### Запуск zapret
+
+```bash
+# Интерактивный режим (запрос параметров)
+./service.sh run
+
+# Загрузка из конфигурационного файла
+./service.sh run --config conf.env
+
+# Прямые параметры
+./service.sh run -s general.bat -i enp0s3
+./service.sh run -s general.bat -i enp0s3 -gt -gu  # с gamefiltertcp и gamefilterudp
+```
+
+### Управление системным сервисом
+
+```bash
+# Интерактивное меню управления сервисом
+./service.sh service
+
+# Установить и запустить сервис
+./service.sh service install
+
+# Показать статус
+./service.sh service status
+
+# Запустить/остановить/перезапустить
+./service.sh service start
+./service.sh service stop
+./service.sh service restart
+
+# Удалить сервис
+./service.sh service remove
+```
+
+### Управление конфигурацией
+
+```bash
+# Показать текущую конфигурацию
+./service.sh config show
+
+# Интерактивное редактирование
+./service.sh config edit
+
+# Установить конфигурацию напрямую
+./service.sh config set general.bat
+./service.sh config set general.bat enp0s3 -gt -gu  # с gamefiltertcp и gamefilterudp
+./service.sh config set discord -n             # без перезапуска сервиса
+```
+
+### Создание ярлыка в меню приложений
+
+```bash
+# Создать ярлык в меню приложений (для GUI запуска)
+./service.sh desktop install
+
+# Удалить ярлык из меню приложений
+./service.sh desktop remove
+```
+
+После установки ярлыка вы сможете запустить zapret из меню приложений вашей системы (категория "Сеть" или "Система").
+
+### Утилиты
+
+```bash
+# Остановить nfqws и очистить nftables
+./service.sh kill
+```
+
+---
+
+## Автоматический подбор стратегий
+
+```bash
+./auto_tune_youtube.sh
+```
+
+Скрипт автоматически:
+1. Перебирает стратегии из `/custom-strategies` и `/zapret-latest` (начинающиеся на `general`)
+2. Тестирует доступ к YouTube
+3. Сохраняет результаты в `auto_tune_youtube_results.txt`
+4. Предлагает запустить или сохранить рабочую стратегию в `conf.env`
+
+> Функционал экспериментальный, достоверность не гарантирована
+
+-----
+```bash
+./auto_tune.sh
+```
+
+Скрипт для проверки любого домена:
+1. Перебирает стратегии из `/custom-strategies` и `/zapret-latest` (начинающиеся на `general`)
+2. Тестирует доступ ко всем указанным через пробел доменам
+3. Сохраняет стратегии сработавшие только на все указанные домены в auto_tune_results.sh
+
+> Функционал также экспериментальный
+
+
+---
+
+## Автозагрузка (системный сервис)
+
+```bash
+# Через CLI
+./service.sh service install
+
+# Или через интерактивное меню
+./service.sh
+# -> выбрать "2. Управление сервисом" -> "1. Установить и запустить сервис"
+```
+
+Скрипт:
+- Проверяет `conf.env` (если пустой — запросит параметры интерактивно)
+- Создаёт сервис для автозапуска (поддерживает systemd, OpenRC, runit, s6, dinit)
+- Использует значения из `conf.env`
+
+<details>
+<summary>Для systemd систем</summary>
 
 Просмотреть статус сервиса можно командой:
 
@@ -103,19 +249,125 @@ systemctl status zapret_discord_youtube.service
 journalctl -u zapret_discord_youtube.service
 ```
 
-Значения для автозагрузки берутся из файла `conf.env`.
+</details>
+
+<details>
+<summary>Для OpenRC систем</summary>
+
+Просмотреть статус сервиса можно командой:
+
+```bash
+rc-service zapret_discord_youtube status
+```
+
+Посмотреть логи сервиса:
+
+```bash
+rc-service zapret_discord_youtube logs
+```
+
+</details>
+
+<details>
+<summary>Для runit систем</summary>
+
+Просмотреть статус сервиса можно командой:
+
+```bash
+sv status zapret_discord_youtube
+```
+
+Посмотреть логи сервиса:
+
+```bash
+tail -f /var/log/zapret_discord_youtube/current
+```
+
+</details>
+
+<details>
+<summary>Для s6 систем</summary>
+
+Просмотреть статус сервиса можно командой:
+
+```bash
+s6-svstat /var/service/zapret_discord_youtube
+```
+
+Посмотреть логи сервиса:
+
+```bash
+tail -f /var/log/zapret_discord_youtube/current
+```
+
+</details>
+
+<details>
+<summary>Для dinit систем</summary>
+
+Просмотреть статус сервиса можно командой:
+
+```bash
+dinitctl status zapret_discord_youtube
+```
+
+Посмотреть логи сервиса:
+
+```bash
+dinitctl log zapret_discord_youtube
+```
+
+</details>
 
 ---
 
-# Совет
+## Поддержка и помощь
 
-- **Не включайте автоапгрейд.**  
-  Если репозиторий [Flowseal/zapret-discord-youtube](https://github.com/Flowseal/zapret-discord-youtube) сильно изменится, возможны проблемы из-за костыльного кода парсинга)
+> [!IMPORTANT]
+> Это АДАПТЕР! Не гарантирует, что стратегии разблокируют всё.
+
+### Если ничего не работает
+
+**Прежде чем создавать Issue или Discussion:**
+
+1. Посмотрите [Issues в репозитории со стратегиями](https://github.com/Flowseal/zapret-discord-youtube/issues) — возможно, проблема уже обсуждается там
+2. Попробуйте другие стратегии или воспользуйтесь [автоматическим подбором](#автоматический-подбор-стратегий)
+3. Проверьте [Discussions](https://github.com/Flowseal/zapret-discord-youtube/discussions) — там обсуждают рабочие решения
+
+### Когда создавать Issue/Discussion у меня
+
+**Когда писать в [Issues](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/issues):**
+- Ошибки в работе **скрипта адаптера**
+- Вопросы по работе **скрипта адаптера**
+- Предложение добавить стратегию в custom-strategies
+
+**Когда писать в [Discussions](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/discussions):**
+- Не работает YouTube или другой сайт (после проверки репозитория Flowseal)
+- Поиск рабочих стратегий
+- Обмен опытом
+
+**Pull Request приветствуются** (например, поддержка iptables)
 
 ---
 
-# Поддержка
+## Контрибьюторы
 
-- Если есть идеи по улучшению — создавайте Pull Request (например, добавить поддержку iptables).
-- Если что-то не работает в скрипте, не запускается, создавайте Issue (пожалуйста, не пишите в личные сообщения) — так мы сможем помочь как можно большему числу пользователей.
-- Если у вас не работает сайт или приложение - создавайте [Discussion](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/discussions)
+<div align="center">
+
+**Спасибо всем, кто улучшает проект!** 🎉
+
+<a href="https://github.com/Sergeydigl3/zapret-discord-youtube-linux/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Sergeydigl3/zapret-discord-youtube-linux" alt="Contributors" />
+</a>
+
+Хотите видеть здесь свое имя? Сделайте [Pull Request](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/pulls)!
+
+</div>
+
+---
+
+<div align="center">
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Sergeydigl3/zapret-discord-youtube-linux&type=Date)](https://star-history.com/#Sergeydigl3/zapret-discord-youtube-linux&Date)
+
+</div>
